@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import { ProductListComponent } from './products/product-list.component';
@@ -11,7 +12,8 @@ import { StarComponent } from './shared/star.component';
     //Angular and Third Party Modules go in the 'imports' array
     imports: [
       BrowserModule,
-      FormsModule
+      FormsModule,
+      HttpModule
     ],
     //The App's Directives, Components and Pipes are declared in the 'declarations' array.
     declarations: [
