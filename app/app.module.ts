@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent }  from './app.component';
+import { ProductDetailGuard } from './products/product-guard.service';
 import { ProductListComponent } from './products/product-list.component';
 import { ProductFilterPipe } from './products/product-filter.pipe';
 import { StarComponent } from './shared/star.component';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
+
 
 @NgModule({
     //Angular and Third Party Modules go in the 'imports' array
@@ -19,7 +21,8 @@ import { WelcomeComponent } from './home/welcome.component';
       HttpModule,
       RouterModule.forRoot([
         { path: 'products', component: ProductListComponent },
-        { path: 'product/:id', component: ProductDetailComponent },
+        { path: 'product/:id', component: ProductDetailComponent,
+                                canActivate: [ ProductDetailGuard] },
         { path: 'welcome', component: WelcomeComponent },
         { path: '', redirectTo: 'welcome', pathMatch: 'full' },
         { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
@@ -34,6 +37,7 @@ import { WelcomeComponent } from './home/welcome.component';
         ProductDetailComponent,
         WelcomeComponent
     ],
+    providers: [ ProductDetailGuard ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
