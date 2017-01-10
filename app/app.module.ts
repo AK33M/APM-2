@@ -1,11 +1,11 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
 
 import { AppComponent }  from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { ProductModule } from './products/product.module';
+import { AppRouterModule } from './app-router.module';
 
 
 @NgModule({
@@ -13,19 +13,15 @@ import { ProductModule } from './products/product.module';
     imports: [
         BrowserModule,
         HttpModule,
-        RouterModule.forRoot([
-            { path: 'welcome', component: WelcomeComponent },
-            { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-            { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
-        ]),
-        ProductModule,
+        ProductModule, // feature module
+        AppRouterModule
     ],
 
     //The App's Directives, Components and Pipes are declared in the 'declarations' array.
     declarations: [
-        AppComponent,
+        AppComponent, 
         WelcomeComponent
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }
